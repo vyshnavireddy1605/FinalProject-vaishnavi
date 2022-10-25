@@ -1,0 +1,65 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div *ngIf = "books.book_id ==0"> <h2>Add Book</h2></div>
+            <div *ngIf = "books.book_id >0">  <h2>Update Book</h2></div>
+            <hr>
+
+            <form #spForma="ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group-row">
+                    <div class="form-group-row">
+                        <label class="col-sm-2 col-form-label">BookName</label>
+                        <input type="text" name="book_name" [(ngModel)]="books.book_name"  required minlength="4" appForbiddenName="bob"
+                        [(ngModel)]="books.book_name" #name="ngModel"/>
+                        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+        class="alert">
+        <div *ngIf="name.errors?.['required']">
+            Name is required.
+          </div>
+          <div *ngIf="name.errors?.['minlength']">
+            Name must be at least 4 characters long.
+          </div>
+          <div *ngIf="name.errors?.['forbiddenName']">
+            Name cannot be Bob.
+          </div>
+        </div>
+      
+                    </div>
+    
+                </div><br>
+                <div class="form-group-row">
+                    <label class="col-sm-2 col-form-label">BookPublisher</label>
+                    <input type="text" name="book_publisher" [(ngModel)]="books.book_publisher" />
+                </div><br>
+                <div class="form-group-row">
+                    <label class="col-sm-2 col-form-label">BookDescription</label>
+                    <input type="text" name="book_description" [(ngModel)]="books.book_description" />
+                </div><br>
+                <div class="form-group-row">
+                    <label class="col-sm-2 col-form-label">UnitPrice</label>
+                    <input type="text" name="unit_price" [(ngModel)]="books.unit_price"/>
+                </div><br>
+                <div class="form-group-row">
+                    <label class="col-sm-2 col-form-label">BookImage</label>
+                    <input type="text" name="book_image" [(ngModel)]="books.book_image" />
+                </div><br>
+                <div class="form-group-row">
+                    <label class="col-sm-2 col-form-label">Active</label>
+                    <input type="text" name="active" [(ngModel)]="books.active" />
+                </div><br>
+                <div class="form-group-row">
+                    <label class="col-sm-2 col-form-label">AvailableStock</label>
+                    <input type="text" name="available_stock" [(ngModel)]="books.available_stock"/>
+                </div><br>
+                <div class="form-group-row">
+                    <label class="col-sm-2 col-form-label">category_id</label>
+                    <input type="text" name="category_id" [(ngModel)]="books.category_id"/>
+                </div><br>
+                <div class="form-group-row">
+                    <div class="col-sm-2"><button class="btn btn-info" type="submit">submit</button></div>
+                </div>
+
+            </form>
+            </div>
+            </div>
+            </div>

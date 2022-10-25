@@ -1,0 +1,70 @@
+create database ecommerce;
+use ecommerce;
+
+create table user(
+`user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(20) DEFAULT NULL,
+  `last_name` varchar(20) DEFAULT NULL,
+  `user_name` varchar(20) NOT NULL,
+  `user_password` varchar(20) NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_name_UNIQUE` (`user_name`)
+) ;
+
+
+insert into user(first_name,last_name,user_name,user_password) values ('Joseph','Roy','Jroy','Joseph@1'),
+     ('Prabha','Fernandes','Joe11','JoFern$12'),
+    ('Roshan','Dass','Princy5','Anto#31'),
+    ('kishan','Shetty','Tillu','kishan@1'),
+    ('vikrat','Ronald','vicky5','ronald@09'),
+     ('Chandra','Mohan','ChandraM','Chan@34'),
+    ('Rosy','Naidu','Rose2','RosyNaidu@3'),
+  ('Srija','Praba','Srija34','srija@12'),
+   ('Malini','Dass','Malini&17','Dass07'),
+    ('Videsh','Reddy','MomDad@12','reddy123');
+    
+    create table`book_category1` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`category_id`),
+  UNIQUE KEY `category_name_UNIQUE` (`category_name`)
+);
+
+
+insert into book_category1(category_id,category_name) values(001,'Novels'),
+(002,'Horror'),(003,'mystery'),(004,'History'),(005,'Computer Science'),(006,'Fiction'),
+(007,'Romance'),(008,'Thriller'),(009,'Childrens Fiction'),(010,'Auto Biography');
+select * from book_category1;
+
+
+select * from user;
+CREATE TABLE `my_book` (
+  `book_id` int AUTO_INCREMENT,
+  `book_name` varchar(20) DEFAULT NULL,
+  `book_publisher` varchar(50) DEFAULT NULL,
+  `book_description` varchar(100) DEFAULT NULL,
+  `unit_price` decimal(13,2) DEFAULT NULL,
+  `book_image` varchar(20) DEFAULT NULL,
+  `active`  int Default NULL,
+  `available_stock` int DEFAULT NULL,
+  `book_category1_id` int,
+  PRIMARY KEY (`book_id`),
+  UNIQUE KEY `book_name_UNIQUE` (`book_name`),
+  KEY `fk_catid_idx` (`book_category1_id`),
+  CONSTRAINT `fk_catid` FOREIGN KEY (`book_category1_id`) REFERENCES `book_category1` (`category_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ;
+
+insert into my_book(book_name,book_publisher,book_description,unit_price,book_image,active,available_stock,book_category1_id) values('The Great Gatsby','Charles Scribners Sons','it tells the tragic story of Jay Gatsby, a wealthy young woman whom he loved in his youth',1000,'aaa',10,2500,001),
+('Tomb of God','Victor Ghoshe','Horror',1000,'bbb',20,300,002),
+('A Naxal Story','Diptendra Raychauduri','Mystery',700,'ccc',15,200,003),
+('Rani Laxmibai','Pratibha Ranade','History',1000,'ddd',1,700,004),
+('Java Programming','Games Gosling','Software Development',400,'eee',30,500,005),
+('The Odyssey by Homer','Antonios Damilas','Fiction',800,'fff',20,1000,006),
+('One Arranged Murder','Chetan Bhagat','romance',900,'ggg',100,450,007),
+('Severn House','Crème de la Crime','Thriller',500,'hhh',50,100,008),
+('Harry Potter','Bloomsbury','Childrens fiction',700,'iii',100,500,009),
+('Wings of Fire','Universities Press','Autobiography of A p j Abdul Kalam',1000,'jjj',100,500,010);
+
+select * from my_book;
+
+alter table my_book rename column book_category1_id to category_id;

@@ -1,0 +1,60 @@
+<html>
+    <body>
+        <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <td><button type="button" class="btn btn-md btn-info" (click) = "addbk()">Add Book</button></td>
+
+            <div class="row">
+              <table class='table table-bordered'>
+                <thead>
+                    <tr class='table-dark'>
+                        <th>Book Id</th>
+                        <th>Book Name</th>
+                        <th>Book Publisher</th>
+                        <th>Book Description</th>
+                        <th>Unit Price</th>
+                        <th>Book Image</th>
+                        <th>Active</th>
+                        <th>Available Stock</th>
+                        <th>Action</th>
+                    </tr>
+            
+                </thead>
+                <tr >
+                    <td>31</td>
+                    <td>Fairy Tales</td>
+                    <td>Stephen King</td>
+                    <td>Children Fiction</td>
+                    <td>300</td>
+                    <td>kkk</td>
+                    <td>300</td>
+                    <td>500</td>
+                </tr>
+                <tr *ngFor="let tempbk of books">
+                    <td>{{tempbk.book_id}}</td>
+                    <td>{{tempbk.book_name}}</td>
+                    <td>{{tempbk.book_publisher}}</td>
+                    <td>{{tempbk.book_description}}</td>
+                    <td>{{tempbk.unit_price}}</td>
+                    <td>{{tempbk.book_image}}</td>
+                    <td>{{tempbk.active}}</td>
+                    <td>{{tempbk.available_stock}}</td>
+                    <td><button type="button" class="btn btn-md btn-info" (click) = "updateBook(tempbk.book_id)">Update</button>
+                        &nbsp; &nbsp;
+                            <button type="button" class="btn btn-md btn-danger" (click) = "deleteBook(tempbk.book_id)">Delete </button></td>
+    
+                </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
